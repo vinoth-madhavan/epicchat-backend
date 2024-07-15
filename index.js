@@ -5,11 +5,17 @@ import cors from 'cors';
 const app = express();
 const port = 3001;
 
-const openai = new OpenAI({ apiKey: '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' });
+const openai = new OpenAI({ apiKey: 'YOUR-API-KEY' });
 
 app.use(cors());
 app.use(express.json());
-
+app.get('/', async (req, res) => {
+    console.log("Request Received:, ", req);
+    const response = {
+        message: 'helloword'
+    }
+    res.json(response);
+});
 app.post('/api/chat', async (req, res) => {
   const { messages } = req.body;
   console.log("-------------------------");
